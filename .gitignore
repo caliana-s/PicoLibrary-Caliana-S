@@ -128,7 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Game.py
-main.py
 MemoryGameController.py
 PianoController.py
 RunnerGame.py
