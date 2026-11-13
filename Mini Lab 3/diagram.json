@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "author": "caliana sunez",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": -8.7,
+      "left": -19.45,
+      "rotate": 270,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 179.2,
+      "left": -100,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -93.6,
+      "left": 165,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -28.03,
+      "left": 255.66,
+      "attrs": { "pixels": "8" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 10.36, "left": -259.2, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc2", "top": -95.24, "left": 480, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 384, "left": -432.6, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 326.4, "left": 489, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -61,
+      "left": 28.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": -61,
+      "left": -57.6,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -171.3, "left": -320.9, "attrs": {} }
+  ],
+  "connections": [
+    [ "vcc1:VCC", "lcd1:VCC", "red", [ "v211.2", "h76.8" ] ],
+    [ "gnd1:GND", "lcd1:GND", "black", [ "v0" ] ],
+    [ "vcc2:VCC", "ring1:VCC", "red", [ "v0" ] ],
+    [ "gnd2:GND", "ring1:GND", "black", [ "v-115.2", "h-115.2", "v0", "h9.6", "v0", "h-9.6" ] ],
+    [ "bz1:1", "gnd2:GND", "green", [ "v105.6", "h96", "v0", "h124.8" ] ],
+    [ "bz1:2", "pico:GP16", "green", [ "v28.8", "h-38.8" ] ],
+    [ "ring1:DIN", "pico:GP2", "green", [ "v48", "h-288" ] ],
+    [ "lcd1:SDA", "pico:GP0", "green", [ "h57.6", "v-105.4" ] ],
+    [ "lcd1:SCL", "pico:GP1", "green", [ "h67.2", "v-114.9" ] ],
+    [ "btn2:1.r", "pico:GP11", "green", [ "v48", "h230.6" ] ],
+    [ "btn2:2.l", "pico:GND.1", "green", [ "h230.4", "v86.6" ] ],
+    [ "btn1:1.r", "pico:GP12", "green", [ "v28.8", "h211.4" ] ],
+    [ "btn1:2.l", "pico:GND.1", "green", [ "h153.6", "v9.8" ] ],
+    [ "ultrasonic1:VCC", "vcc1:VCC", "red", [ "v67.2", "h19.2" ] ],
+    [ "ultrasonic1:GND", "gnd1:GND", "black", [ "v489.6", "h-1.2" ] ],
+    [ "ultrasonic1:TRIG", "pico:GP6", "green", [ "v201.6", "h249.2" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP7", "green", [ "v201.6", "h248.8" ] ]
+  ],
+  "dependencies": {}
+}
